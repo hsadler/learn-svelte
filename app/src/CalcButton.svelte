@@ -3,9 +3,9 @@
 
     const handleClick = () => {
         if(type === 'clear') {
-            calcModel.clearOperations();
+            calcModel.clearCalculations();
         } else if(type === 'equals') {
-            calcModel.commitOperations();
+            calcModel.commitCalculations();
         } else {
             calcModel.appendOperation(symbol);
         }

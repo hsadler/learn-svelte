@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store'
-
+import { calcFromParts } from './helpers'
 
 const calculatorInitialState = {
     layout: {
@@ -9,39 +9,54 @@ const calculatorInitialState = {
         equals: '=',
         clear: 'AC'
     },
-    operations: []
+    operations: [0]
 }
 
 function createCalcModel() {
     const { subscribe, set, update } = writable(calculatorInitialState);
     return {
         subscribe,
-        appendOperation: (operation) => {
+        appendOperation(operation) {
             update(store => {
+                const lastItem = store.operations[store.operations.length -1];
+                let newOperations;
+                let displayOperation = operation;
+                const shouldCombineOperations = (
+                    typeof(lastItem) === 'number' && 
+                    typeof(operation) === 'number' &&
+                    lastItem !== 0
+                );
+                if(shouldCombineOperations) {
+                    const combinedOperation = parseFloat(String(lastItem) + String(operation));
+                    store.operations[store.operations.length -1] = combinedOperation;
+                    newOperations = [...store.operations];
+                    displayOperation = combinedOperation;
+                } else {
+                    newOperations = [...store.operations, operation];
+                }
                 return {
                     ...store,
-                    operations: [...store.operations, operation]
+                    operations: newOperations,
+                    layout: {
+                        ...store.layout,
+                        display: displayOperation
+                    }
                 }
             })
         },
-        commitOperations() {
+        commitCalculations() {
             update(store => {
                 return {
                     ...store,
                     layout: {
                         ...store.layout,
-                        display: store.operations.join(',')
+                        display: calcFromParts(store.operations)
                     }
                 }
             })
         },
-        clearOperations() {
-            update(store => {
-                return {
-                    ...store,
-                    operations: []
-                }
-            });
+        clearCalculations() {
+            set(calculatorInitialState);
         }
     };
 }

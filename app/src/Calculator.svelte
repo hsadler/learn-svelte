@@ -38,7 +38,7 @@
     }
     div.display {
         width: 400px;
-        height: 100px;
+        height: 110px;
         /* border: 1px solid black; */
     }
     div.numbers {
