@@ -9,7 +9,7 @@ const calculatorInitialState = {
         equals: '=',
         clear: 'AC'
     },
-    operations: [0]
+    operations: []
 }
 
 function createCalcModel() {
@@ -27,8 +27,10 @@ function createCalcModel() {
                     lastItem !== 0
                 );
                 if(shouldCombineOperations) {
-                    const combinedOperation = parseFloat(String(lastItem) + String(operation));
-                    store.operations[store.operations.length -1] = combinedOperation;
+                    const combinedOperation = 
+                        parseFloat(String(lastItem) + String(operation));
+                    store.operations[store.operations.length -1] = 
+                        combinedOperation;
                     newOperations = [...store.operations];
                     displayOperation = combinedOperation;
                 } else {
