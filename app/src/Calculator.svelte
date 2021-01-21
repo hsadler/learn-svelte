@@ -2,16 +2,57 @@
     import { calcModel } from './stores.js'
     import CalcDisplay from './CalcDisplay.svelte'
     import CalcButton from './CalcButton.svelte'
+
+    const { numbers, operators, equals, clear } = $calcModel.layout;
 </script>
 
-<div class="calculator-container">
-    <p>{$calcModel}</p>
+<div class="calculator">
+    <div class="display">
+        <CalcDisplay/>
+    </div>
+    <div class="numbers">
+        {#each numbers as number}
+            <CalcButton symbol={number}/>
+        {/each}
+    </div>
+    <div class="operators">
+        {#each operators as operator}
+        <CalcButton symbol={operator}/>
+        {/each}
+    </div>
+    <div class="equals-and-clear">
+        <CalcButton symbol={equals} type="equals"/>
+        <CalcButton symbol={clear} type="clear"/>
+    </div>
 </div>
 
 <style>
-    div.calculator-container {
-        width: 400px;
-        height: 400px;
+    div {
+        display: inline-block;
+        box-sizing: border-box;
+    }
+    div.calculator {
+        width: 420px;
+        height: 620px;
         border: 1px solid black;
+    }
+    div.display {
+        width: 400px;
+        height: 100px;
+        /* border: 1px solid black; */
+    }
+    div.numbers {
+        width: 305px;
+        height: 405px;
+        /* border: 1px solid black; */
+    }
+    div.operators {
+        width: 100px;
+        height: 400px;
+        /* border: 1px solid black; */
+    }
+    div.equals-and-clear {
+        width: 400px;
+        height: 100px;
     }
 </style>
