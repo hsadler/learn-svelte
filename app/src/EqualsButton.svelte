@@ -1,5 +1,4 @@
 <script>
-    // import s from './button-styles.css'
 </script>
 
 <div>

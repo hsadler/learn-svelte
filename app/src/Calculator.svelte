@@ -1,14 +1,11 @@
 <script>
-    import Display from './Display.svelte'
-    import NumberButton from './NumberButton.svelte'
-    import OperatorButton from './OperatorButton.svelte'
-    import EqualsButton from './EqualsButton.svelte'
-    import ClearButton from './ClearButton.svelte'
+    import { calcModel } from './stores.js'
+    import CalcDisplay from './CalcDisplay.svelte'
+    import CalcButton from './CalcButton.svelte'
 </script>
 
 <div class="calculator-container">
-    <EqualsButton></EqualsButton>
-    <ClearButton></ClearButton>
+    <p>{$calcModel}</p>
 </div>
 
 <style>
