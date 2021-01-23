@@ -1,6 +1,9 @@
 <script>
     import { calcModel } from './stores.js'
-
+    export let symbol;
+    export let type = "none";
+    export let buttonColor = "slategray";
+    
     const handleClick = () => {
         if(type === 'clear') {
             calcModel.clearCalculations();
@@ -10,13 +13,13 @@
             calcModel.appendOperation(symbol);
         }
     }
-
-    export let symbol;
-    export let type = "none";
 </script>
 
 <div>
-    <button on:click={handleClick}>{symbol}</button>
+    <button 
+        on:click={handleClick} 
+        style="background-color: {buttonColor}"
+    >{symbol}</button>
 </div>
 
 <style>
@@ -28,8 +31,12 @@
         margin: 0px;
         padding: 0px;
         box-sizing: border-box;
+        color: white;
     }
     button:hover {
         cursor: pointer;
+    }
+    button:focus {
+        border: 3px solid black;
     }
 </style>

@@ -17,12 +17,12 @@
     </div>
     <div class="operators">
         {#each operators as operator}
-        <CalcButton symbol={operator}/>
+        <CalcButton symbol={operator} buttonColor="darkBlue"/>
         {/each}
     </div>
     <div class="equals-and-clear">
-        <CalcButton symbol={equals} type="equals"/>
-        <CalcButton symbol={clear} type="clear"/>
+        <CalcButton symbol={equals} type="equals" buttonColor="salmon"/>
+        <CalcButton symbol={clear} type="clear" buttonColor="salmon"/>
     </div>
 </div>
 
@@ -39,17 +39,14 @@
     div.display {
         width: 400px;
         height: 110px;
-        /* border: 1px solid black; */
     }
     div.numbers {
         width: 305px;
         height: 405px;
-        /* border: 1px solid black; */
     }
     div.operators {
         width: 100px;
         height: 400px;
-        /* border: 1px solid black; */
     }
     div.equals-and-clear {
         width: 400px;
