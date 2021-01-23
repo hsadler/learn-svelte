@@ -6,7 +6,7 @@ spin-up with command:
 make dev
 ```
 
-navigate to localhost:5000
+navigate to `localhost:5000`
 
 spin-down with mac OS command:
 ```sh
