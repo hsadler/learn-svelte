@@ -17,11 +17,20 @@
     </div>
     <div class="operators">
         {#each operators as operator}
-        <CalcButton symbol={operator} buttonColor="darkBlue"/>
+        <CalcButton 
+            symbol={operator} 
+            buttonColor="steelblue" 
+            buttonFocusColor="darkblue"
+        />
         {/each}
     </div>
     <div class="equals-and-clear">
-        <CalcButton symbol={equals} type="equals" buttonColor="salmon"/>
+        <CalcButton 
+            symbol={equals} 
+            type="equals" 
+            buttonColor="salmon" 
+            buttonFocusColor="darkred"
+        />
         <CalcButton symbol={clear} type="clear" buttonColor="salmon"/>
     </div>
 </div>
@@ -33,8 +42,8 @@
     }
     div.calculator {
         width: 420px;
-        height: 620px;
-        border: 1px solid black;
+        height: 626px;
+        border: 4px solid black;
     }
     div.display {
         width: 400px;

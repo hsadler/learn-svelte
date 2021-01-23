@@ -3,6 +3,7 @@
     export let symbol;
     export let type = "none";
     export let buttonColor = "slategray";
+    export let buttonFocusColor = "darkslategray";
     
     const handleClick = () => {
         if(type === 'clear') {
@@ -13,12 +14,18 @@
             calcModel.appendOperation(symbol);
         }
     }
+
+    let focus = false;
+    const handleFocus = () => focus = true;
+    const handleBlur = () => focus = false;
 </script>
 
 <div>
     <button 
         on:click={handleClick} 
-        style="background-color: {buttonColor}"
+        on:focus={handleFocus}
+        on:blur={handleBlur}
+        style="background-color: {focus ? buttonFocusColor : buttonColor}"
     >{symbol}</button>
 </div>
 
@@ -37,6 +44,6 @@
         cursor: pointer;
     }
     button:focus {
-        border: 3px solid black;
+        border: 4px solid black;
     }
 </style>
