@@ -1,17 +1,11 @@
 
 # Sample Calculator Application
 
-spin-up with command:
-```sh
-make dev
-```
+spin-up with command: `make dev`
 
 navigate to `localhost:5000`
 
-spin-down with mac OS command:
-```sh
-control+c
-```
+spin-down with mac OS key command: `control+c`
 
 ## Testing Needed!
 
